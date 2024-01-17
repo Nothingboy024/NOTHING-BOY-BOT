@@ -34,7 +34,7 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
     # https://stackoverflow.com/a/13891070/4723940
     kk = video_file.split("/")[-1]
     aa = kk.split(".")[-1]
-    out_put_file_name = kk.replace(f".{aa}", "[@Anime_Sensei_Network].mkv")
+    out_put_file_name = kk.replace(f".{aa}", "[@ptvnothingboy].mkv")
     #out_put_file_name = video_file + "_compressed" + ".mkv"
     progress = output_directory + "/" + "progress.txt"
     with open(progress, 'w') as f:
@@ -49,7 +49,7 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
     preset.append("veryfast")
     audio_b.append("40k")
     watermark.append('')
-    file_genertor_command = f"ffmpeg -hide_banner -loglevel quiet -progress '{progress}' -i '{video_file}' -metadata 'title=Encoded by [@Anime_Sensei_Network]' -c:v {codec[0]}  -map 0 -crf {crf[0]} -c:s copy -pix_fmt yuv420p -s {resolution[0]} -b:v 150k -c:a libopus -b:a {audio_b[0]} -preset {preset[0]} -metadata:s:a 'title=Anime Sensei' -metadata:s:s 'title=Anime Sensei' '{out_put_file_name}' -y"
+    file_genertor_command = f"ffmpeg -hide_banner -loglevel quiet -progress '{progress}' -i '{video_file}' -metadata 'title=Encoded by [@ptvnothingboy]' -c:v {codec[0]}  -map 0 -crf {crf[0]} -c:s copy -pix_fmt yuv420p -s {resolution[0]} -b:v 150k -c:a libopus -b:a {audio_b[0]} -preset {preset[0]} -metadata:s:a 'title=nothing boy' -metadata:s:s 'title=nothing boy' '{out_put_file_name}' -y"
  #Done !!
     COMPRESSION_START_TIME = time.time()
     process = await asyncio.create_subprocess_shell(
@@ -133,7 +133,7 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
     r = stderr.decode()
     try:
         if er:
-           await message.edit_text(str(er) + "\n\n**ERROR** Contact @TheBatmanShan")
+           await message.edit_text(str(er) + "\n\n**ERROR** Contact @ptvnothingboy")
            os.remove(videofile)
            os.remove(out_put_file_name)
            return None
